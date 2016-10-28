@@ -32,6 +32,7 @@ mtl_german_officer_body
 mtl_german_nrmndy_chrcters_body
 mtl_africa_german
 mtl_german_nrmndy_chrcters_metal
+
 // Britain
 mtl_british_nm
 mtl_brtish_afrca_heads
@@ -40,6 +41,7 @@ mtl_brtish_afrca_chrcters
 mtl_afrca_british_mcgrgr_alpha
 mtl_afrca_british_body
 mtl_boon_head
+
 // America
 mtl_us_ranger_markings
 mtl_amer_braeburn_wet
@@ -47,6 +49,7 @@ mtl_us_rangers
 mtl_us_ranger_harry
 mtl_ericp_head
 mtl_grant_head_wet
+
 // Russia
 mtl_russian_body
 mtl_russian_alex_head
@@ -56,6 +59,7 @@ mtl_russian_head_volsky
 mtl_david_head_wet
 mtl_joel_head
 mtl_russian_head_volsky
+
 // Weapon
 mtl_weapons_fg42
 mtl_weapons_panzerfaust_high
