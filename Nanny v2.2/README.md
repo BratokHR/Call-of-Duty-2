@@ -2,7 +2,7 @@
 ### Video link:
 https://www.youtube.com/watch?v=YNo8zq921-Y
 ### Download link:
-https://github.com/BratokHR/Call-of-Duty-2/raw/master/Nanny%20v2.2/Download.zip
+https://github.com/BratokHR/Call-of-Duty-2/raw/master/Nanny%20v2.2/Nanny%20v2.0.dwnld.zip
 ### Standard commands:
 - !cmdlist - writes in console all commands;
 - !time - shows the current time;
