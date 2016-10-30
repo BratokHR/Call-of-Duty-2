@@ -11,7 +11,7 @@
 - !save.say - saves say command;
 - !save.symbol - saves first symbol for commands;
 
-#### Sign in:
+### Sign in:
 ```
 !save.rcon password
 !login
