@@ -1,6 +1,8 @@
 # Nanny for Call of Duty 2 (1.0)
-### Video link: **https://www.youtube.com/watch?v=YNo8zq921-Y**
-### Download link: https://mega.nz/#!d5FzQAgC!8u6hKzjMJmyOWjnUnZTOvWoo8uEFhD2wb9Lg5FaxQ_c
+### Video link:
+https://www.youtube.com/watch?v=YNo8zq921-Y
+### Download link:
+https://mega.nz/#!d5FzQAgC!8u6hKzjMJmyOWjnUnZTOvWoo8uEFhD2wb9Lg5FaxQ_c
 ### Standard commands:
 - !cmdlist - writes in console all commands;
 - !time - shows the current time;
