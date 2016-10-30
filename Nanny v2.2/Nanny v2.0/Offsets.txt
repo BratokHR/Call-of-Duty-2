@@ -1,0 +1,12 @@
+Offsets for Call of Duty 2 (1.0)
+
+Field: chat - 005c3820 / console 005C3700
+FieldDraw(int menuID, mfield_t *field, int a1, int a2) - 00409190
+
+CL_AddReliableCommand(const char *cmd) - 0040B650
+call CL_AddReliableCommand - 0040A437
+
+call FieldDraw console - 00405C70
+call FieldDraw chat - 0040656C
+
+MessageKey(int key) - 0040A3C0
