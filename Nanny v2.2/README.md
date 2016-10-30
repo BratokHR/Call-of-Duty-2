@@ -1,6 +1,8 @@
 # Nanny for Call of Duty 2 (1.0)
 ### Video link:
 https://www.youtube.com/watch?v=YNo8zq921-Y
+### Download link:
+https://github.com/BratokHR/Call-of-Duty-2/raw/master/Nanny%20v2.2/Download.zip
 ### Standard commands:
 - !cmdlist - writes in console all commands;
 - !time - shows the current time;
