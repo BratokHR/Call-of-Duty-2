@@ -13,12 +13,12 @@ client_t client;
 typedef void	(*t_EndFrame)	( );
 t_EndFrame	o_EndFrame = (t_EndFrame)NULL;
 
-const char *copyright = "RconVodka: developed BratokHR specially to CrackedVodka";
+const char *copyright = "AdminVodka: developed BratokHR specially to CrackedVodka";
 
 vec4_t color_spec_text = { 1, 1, 1, 1 };
 
 void h_EndFrame()
-{ 
+{
 	o_EndFrame();
 
 	if (!client.onVodka)
@@ -33,8 +33,8 @@ void h_EndFrame()
 
 void h_SendCommandToServer(char *text)
 {
-	// 0xA6EE80 - (int) кол-во аргументов
-	// 0xA6C480 - указатели на аргументы
+	// 0xA6EE80 - (int) РєРѕР»-РІРѕ Р°СЂРіСѓРјРµРЅС‚РѕРІ
+	// 0xA6C480 - СѓРєР°Р·Р°С‚РµР»Рё РЅР° Р°СЂРіСѓРјРµРЅС‚С‹
 
 	if (!client.onVodka || cmds.empty()) {
 		SendCommand(text);
@@ -47,13 +47,13 @@ void h_SendCommandToServer(char *text)
 		command = command.substr(1, command.size()-1);
 
 	if (command == "commands") {
-		cmds.clear(); // Подготовка вектора
-		client.readCommands = true; // Флаг о том, что будут считываться команды
-		client.readTick = si->FrameCount + 10; // Время считывания будет 2 ед. времени сервера
-		SendCommand("/help"); // На сервер отправляется команда "//help"
+		cmds.clear(); // РџРѕРґРіРѕС‚РѕРІРєР° РІРµРєС‚РѕСЂР°
+		client.readCommands = true; // Р¤Р»Р°Рі Рѕ С‚РѕРј, С‡С‚Рѕ Р±СѓРґСѓС‚ СЃС‡РёС‚С‹РІР°С‚СЊСЃСЏ РєРѕРјР°РЅРґС‹
+		client.readTick = si->FrameCount + 10; // Р’СЂРµРјСЏ СЃС‡РёС‚С‹РІР°РЅРёСЏ Р±СѓРґРµС‚ 2 РµРґ. РІСЂРµРјРµРЅРё СЃРµСЂРІРµСЂР°
+		SendCommand("/help"); // РќР° СЃРµСЂРІРµСЂ РѕС‚РїСЂР°РІР»СЏРµС‚СЃСЏ РєРѕРјР°РЅРґР° "//help"
 	}
-	else if (command == "test") {
-		((void(*)(int a1, char *text)) 0x430B20)(6, "EXE_SAY");
+	else if (command == "error_test") {
+		((void(*)(int a1, char *text)) 0x430B20)(6, "EXE_SAY"); // РѕС€РёР±РєР°
 	}
 	else if (command == "spec") {
 		if (client.spec) {
@@ -62,9 +62,9 @@ void h_SendCommandToServer(char *text)
 			return;
 		}
 
-		if (ci[cg->clientNum].team == team_t::TEAM_SPECTATOR) { // Проверка, что клиент в зрителях
-			std::string arg = std::string(*(char**)0xA6C484); // Получение аргумента
-			int player_id = getID(arg.c_str());  // Получение ID игрока
+		if (ci[cg->clientNum].team == team_t::TEAM_SPECTATOR) { // РџСЂРѕРІРµСЂРєР°, С‡С‚Рѕ РєР»РёРµРЅС‚ РІ Р·СЂРёС‚РµР»СЏС…
+			std::string arg = std::string(*(char**)0xA6C484); // РџРѕР»СѓС‡РµРЅРёРµ Р°СЂРіСѓРјРµРЅС‚Р°
+			int player_id = getID(arg.c_str());  // РџРѕР»СѓС‡РµРЅРёРµ ID РёРіСЂРѕРєР°
 
 			if (player_id < 65 && player_id >= 0) {
 				if (player_id == cg->clientNum) {
@@ -135,7 +135,7 @@ void h_DrawConsole()
 	if (!client.onVodka || cmds.empty())
 		return;
 
-	// Получение текста в консоле
+	// РџРѕР»СѓС‡РµРЅРёРµ С‚РµРєСЃС‚Р° РІ РєРѕРЅСЃРѕР»Рµ
 	std::string cmd = std::string(field->console.buffer);
 
 	if (strncmp(cmd.c_str(), "//", 2) == 0) {
@@ -143,7 +143,7 @@ void h_DrawConsole()
 
 		std::string cmd_name = "", cmd_args = "";
 
-		// Получение команды и аргументов
+		// РџРѕР»СѓС‡РµРЅРёРµ РєРѕРјР°РЅРґС‹ Рё Р°СЂРіСѓРјРµРЅС‚РѕРІ
 		cmd = cmd.substr(2, cmd.size()-2);
 		unsigned int num_symbol = cmd.find(" ");
 
@@ -154,11 +154,11 @@ void h_DrawConsole()
 			cmd_name = cmd.substr(0, num_symbol);
 			cmd_args = cmd.substr(num_symbol+1, cmd.size());
 		}
-		
+
 		cmd_name = clearMeta(cmd_name);
 		cmd_args = clearMeta(cmd_args);
 
-		// Получене списка команд
+		// РџРѕР»СѓС‡РµРЅРµ СЃРїРёСЃРєР° РєРѕРјР°РЅРґ
 		std::string cmd_list = "^5", reg = "^"+cmd_name+(num_symbol==-1?".*":"$");
 		int count_commands = 0, crnt_command = -1;
 		std::regex pattern(reg.c_str(), std::regex_constants::icase);
@@ -171,7 +171,7 @@ void h_DrawConsole()
 			}
 		}
 
-		// Вывод всех команд
+		// Р’С‹РІРѕРґ РІСЃРµС… РєРѕРјР°РЅРґ
 		if (count_commands > 24) {
 			std::string txt = "^5" + std::to_string(count_commands) + " matches (too many to show)";
 			DrawConsoleBox(1, (char*)txt.c_str());
@@ -201,7 +201,7 @@ void h_DrawConsole()
 						tab += ci[player_id].name;
 				}
 				else if (arg == "player id") {
-					if (cmd_args >= "0" && cmd_args <= "64") {
+					if (cmd_args >= "0" && cmd_args <= "64" || cmd_args == "7" || cmd_args == "8" || cmd_args == "9") {
 						int player_id = atoi(cmd_args.c_str());
 
 						if (!ci[player_id].infoValid)
@@ -241,14 +241,14 @@ void mainloop()
 			client.readTick = 0;
 
 			if (!cmds.empty()) {
-				AddStandartCmd(); // Добавление стандартных команд
+				AddStandartCmd(); // Р”РѕР±Р°РІР»РµРЅРёРµ СЃС‚Р°РЅРґР°СЂС‚РЅС‹С… РєРѕРјР°РЅРґ
 				Sayline("^9Admin^7Vodka: you have ^2successfully ^9logged ^7in!");
 			}
 
 			std::sort(cmds.begin(), cmds.end(), _sort);
 		}
 
-		// Проверка что клиент на водке
+		// РџСЂРѕРІРµСЂРєР° С‡С‚Рѕ РєР»РёРµРЅС‚ РЅР° РІРѕРґРєРµ
 		if (cg->clientFrame != 0 && strncmp(si->ServerName, "Cracked^5Vodka", 14) == 0) {
 			cracking_hook_push((int)0x406893, (int)copyright);
 			client.onVodka = true;
@@ -259,7 +259,7 @@ void mainloop()
 			cmds.clear();
 		}
 
-		// Автоматическая загрузка команд
+		// РђРІС‚РѕРјР°С‚РёС‡РµСЃРєР°СЏ Р·Р°РіСЂСѓР·РєР° РєРѕРјР°РЅРґ
 		if (client.onVodka && cmds.empty() && (si->FrameCount % 20 == 0)) {
 			client.readCommands = true;
 			client.readTick = si->FrameCount + 10;

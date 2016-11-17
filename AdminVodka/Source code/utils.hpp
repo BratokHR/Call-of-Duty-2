@@ -2,7 +2,7 @@ extern clientInfo_t *	ci;
 
 char* stripSpace(char* text)
 {
-	char ret_text[MAX_EDIT_LINE];
+	char ret_text[512];
 	char *p = &ret_text[0];
 
 	for (char *a = text; *a; a++) {
@@ -19,7 +19,7 @@ char* stripSpace(char* text)
 
 char* stripColor(char* text)
 {
-	char ret_text[MAX_EDIT_LINE];
+	char ret_text[512];
 	char* _text = text, *p = &ret_text[0], *_p = &ret_text[0];
 	bool gotcolor = true;
 
